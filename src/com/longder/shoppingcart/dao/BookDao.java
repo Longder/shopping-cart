@@ -15,6 +15,10 @@ import java.util.List;
  */
 public class BookDao {
 
+    /**
+     * 查询所有图书
+     * @return
+     */
     public List<Book> listAll(){
         List<Book> bookList = new ArrayList<>();
 
@@ -39,5 +43,31 @@ public class BookDao {
             DBUtil.closeConnection(connection);
         }
         return bookList;
+    }
+
+    /**
+     * 根据id查询一本图书
+     * @return
+     */
+    public Book getById(Long bookId){
+        Book book = null;
+        Connection connection = DBUtil.getConnection();
+        String sql = "SELECT * FROM BOOK WHERE id_ = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setLong(1,bookId);
+            ResultSet resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                book = new Book();
+                book.setId(resultSet.getLong("id_"));
+                book.setName(resultSet.getString("name_"));
+                book.setPrice(resultSet.getDouble("price_"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.closeConnection(connection);
+        }
+        return book;
     }
 }

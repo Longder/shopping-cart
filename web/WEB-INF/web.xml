@@ -15,4 +15,41 @@
         <servlet-name>init</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>toBuy</servlet-name>
+        <servlet-class>com.longder.shoppingcart.web.BuyFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toBuy</servlet-name>
+        <url-pattern>/toBuy</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>add</servlet-name>
+        <servlet-class>com.longder.shoppingcart.web.AddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>add</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showCart</servlet-name>
+        <servlet-class>com.longder.shoppingcart.web.ShowCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showCart</servlet-name>
+        <url-pattern>/showCart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>remove</servlet-name>
+        <servlet-class>com.longder.shoppingcart.web.RemoveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>remove</servlet-name>
+        <url-pattern>/remove</url-pattern>
+    </servlet-mapping>
+
 </web-app>

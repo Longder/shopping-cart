@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>图书列表</title>
+    <title>购买商品</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/css/bootstrap.css" rel="stylesheet">
@@ -16,31 +16,22 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="${ctx}/static/img/contacts-logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-        图书列表
+        确定购买商品
     </a>
 </nav>
 <div class="container">
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th scope="col">书本名称</th>
-            <th scope="col">书本价格</th>
-            <th scope="col">操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${bookList}" var="book">
-            <tr>
-                <td>${book.name}</td>
-                <td>${book.price}</td>
-                <td>
-                    <a href="${ctx}/toBuy?id=${book.id}" class="btn btn-warning btn-sm">购买</a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <h4><a href="${ctx}/showCart">查看我的购物车</a></h4>
+    <h2 style="margin-top: 100px;">欢迎购买：${book.name}</h2>
+    <h4>书本价格：${book.price}</h4>
+    <form class="form-inline" action="${ctx}/add" method="post">
+        <div class="form-group mb-2">
+            <label>数量：</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="hidden" name="bookId" value="${book.id}" />
+            <input type="number" class="form-control" value="1" name="count"/>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">确定购买</button>
+    </form>
 </div>
 </body>
 </html>

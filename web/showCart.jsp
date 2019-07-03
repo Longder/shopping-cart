@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>图书列表</title>
+    <title>购物车</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/css/bootstrap.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="${ctx}/static/img/contacts-logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-        图书列表
+        购物车
     </a>
 </nav>
 <div class="container">
@@ -24,23 +24,29 @@
         <thead>
         <tr>
             <th scope="col">书本名称</th>
-            <th scope="col">书本价格</th>
+            <th scope="col">书本单价</th>
+            <th scope="col">数量</th>
+            <th scope="col">价格</th>
             <th scope="col">操作</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${bookList}" var="book">
+        <c:forEach items="${detailList}" var="detail">
             <tr>
-                <td>${book.name}</td>
-                <td>${book.price}</td>
+                <td>${detail.bookName}</td>
+                <td>${detail.bookPrice}</td>
+                <td>${detail.count}</td>
+                <td>${detail.price}</td>
                 <td>
-                    <a href="${ctx}/toBuy?id=${book.id}" class="btn btn-warning btn-sm">购买</a>
+                    <a href="${ctx}/remove?id=${detail.id}" class="btn btn-danger btn-sm">删除</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <h4><a href="${ctx}/showCart">查看我的购物车</a></h4>
+    <h5>总价：${total}</h5>
+    <h4><a href="${ctx}/index">继续购物</a></h4>
 </div>
+
 </body>
 </html>
